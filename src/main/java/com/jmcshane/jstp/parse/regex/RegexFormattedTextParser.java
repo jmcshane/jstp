@@ -7,9 +7,9 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.jmcshane.jstp.parse.Parser;
+import com.jmcshane.jstp.parse.FormattedTextParser;
 
-public class RegexFormattedTextParser implements Parser {
+public class RegexFormattedTextParser implements FormattedTextParser {
 
 	protected final Pattern regex;
 	

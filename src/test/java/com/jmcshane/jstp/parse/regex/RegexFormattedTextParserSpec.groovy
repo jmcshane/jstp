@@ -3,7 +3,7 @@ package com.jmcshane.jstp.parse.regex
 import spock.lang.Specification
 import spock.lang.Unroll
 
-import com.jmcshane.jstp.parse.Parser
+import com.jmcshane.jstp.parse.FormattedTextParser
 
 @Unroll
 class RegexFormattedTextParserSpec extends Specification {
@@ -11,7 +11,7 @@ class RegexFormattedTextParserSpec extends Specification {
 	def "#regex should parse #string to single key #value map"() {
 		given: 'A regex expression and an output name'
 			def key = "key"
-			Parser tp = new RegexFormattedTextParser(regex, key)
+			FormattedTextParser tp = new RegexFormattedTextParser(regex, key)
 		when: 'The parser parses a string input'
 			def map = tp.parse(string)
 		then: 'The resulting map has the appropriate key/value pair and size'
@@ -26,7 +26,7 @@ class RegexFormattedTextParserSpec extends Specification {
 	
 	def "#regex does not match #string so parse returns null"() {
 		given: 'A parser is setup with a regex'
-			Parser tp = new RegexFormattedTextParser(regex, "noop")
+			FormattedTextParser tp = new RegexFormattedTextParser(regex, "noop")
 		when: 'The parser parses a string that it does not match'
 			def map = tp.parse(string)
 		then: 'The resulting map should be null'
@@ -40,7 +40,7 @@ class RegexFormattedTextParserSpec extends Specification {
 	def "multi-group regex #regex matches #string to three groups"() {
 		given: 'A list of three groups and a regex three matching groups'
 			def groups = ["f", "s", "t"]
-			Parser tp = new RegexFormattedTextParser(regex, groups)
+			FormattedTextParser tp = new RegexFormattedTextParser(regex, groups)
 		when: 'The parser parses those groups'
 			def map = tp.parse(string)
 		then: 'The resulting map should have the three key/value pairs'
