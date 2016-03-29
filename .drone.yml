@@ -1,0 +1,4 @@
+build:
+  image: java:8
+  commands:
+    - gradlew build
